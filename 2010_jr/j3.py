@@ -37,7 +37,7 @@ while order in '123456':
         y = string[2]
         value_x = int(dic[x])
         value_y = int(dic[y])
-        value_x = value_x - value_y
+        value_x = value_x // value_y
         dic[x] = value_x 
 
     string = input().split()
