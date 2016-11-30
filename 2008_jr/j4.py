@@ -4,20 +4,26 @@ def prefix_postfix(prefix):
     operlist = []
     operandlist = []
     postfixlist = []
-    for token in prefix:
+    for i in range(len(prefix)):
+        token = prefix[i]
         if token in "+-":
             operlist.append(token)
-            if prefix[index + 1].isdigit() and prefix[index + 2].isdigit(): 
-                postfixlist.append(prefix[index + 1])
-                postfixlist.append(prefix[index + 2])
-                postfixlist.append(token)
-                
-            """    
-            elif prefix[index + 1].isdigit() and not prefix[index + 2].isdigit():
-            """
-                
-            
-            
-        index = index + 1
+            if len(operandlist) == 1:
+                postfixlist.append(operandlist.pop())
         
-    return postfixlist
+        else:
+            if len(operandlist) == 2:
+                postfixlist.append(operandlist.pop(0))
+                postfixlist.append(operandlist.pop(0))
+                postfixlist.append(operlist.pop())
+                
+            operandlist.append(token)
+            
+    if len(operandlist) == 1:
+        postfixlist.append(operlist.pop())
+        postfixlist.append(operandlist.pop())
+    
+    for i in operlist:
+        postfixlist.append(i)
+        
+    return " ".join(postfixlist)
