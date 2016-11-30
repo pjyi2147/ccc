@@ -27,3 +27,5 @@ def prefix_postfix(prefix):
         postfixlist.append(i)
         
     return " ".join(postfixlist)
+    
+print(prefix_postfix("- - 3 + 2 1 9"))
