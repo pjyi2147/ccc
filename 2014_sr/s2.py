@@ -12,14 +12,17 @@ with open('s2.in', 'r') as f:
     for i in range(i):
         item = secondlist[i]
         key = dic[item]
-        if firstlist[i] != secondlist[key]:
+        if firstlist[key] == item:
             correct = False
 
-    if correct:
-        print('good')
+        elif firstlist[i] != secondlist[key]:
+            correct = False
 
-    else:
-        print('bad')
+if correct:
+    print('good')
+
+else:
+    print('bad')
         
 
 
