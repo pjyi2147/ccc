@@ -18,32 +18,44 @@ with open('s3.in', 'r') as f:
         lake = []
         # logic start here 
         fail = False
-        while numlist:        #this only 0
+        while len(numlist) > 0:        #this only 0
             num = numlist.pop()
 
             if num == 1: 
-                lake.append(numlist.pop()) 
+                lake.append(num) 
 
             
-            elif lake:
+            elif len(lake) > 0:
 
-                if num != 1 and num == lake[-1]:
-                    lake.append(numlist.pop())
+                if num == lake[-1]:
+                    lake.append(num)
+                
+                while len(branch) > 0:
+                    if branch[-1] == lake[-1]:
+                        lake.append(branch.pop())
 
-                elif num != 1 and num != lake[-1]: 
-                    branch.append(numlist.pop())
-
-                elif branch and branch[-1] == lake[-1]:
-                    lake.append(branch.pop())
-
+                    elif num != lake[-1]: 
+                        branch.append(num)
+                    
+                    else: 
+                        break
+               
             else: 
                 branch.append(num)
-            
+
+        while len(branch) > 0:
+            if branch[-1] == lake[-1]:
+                lake.append(branch.pop())
+     
+
         if len(branch) != 0:
             fail = True
+        
+       
+       
 
-            
-        if fail:
+        
+        if not fail:
             print('Y')
 
         else: 
