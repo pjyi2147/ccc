@@ -95,7 +95,7 @@ def postfixCal(postfixequa):
                 operandStack.push(operand1 * operand2)
 
             elif token == '/':
-                #should return integer to the stack 
+                #should return integer to the stack
                 operandStack.push(operand1 // operand2)
 
             elif token == '%':
@@ -106,34 +106,34 @@ def postfixCal(postfixequa):
 
 
     return operandStack.pop()    
-                
-    
+
 def calculator(infixequa):
     return postfixCal(infix_postfix(infixequa))
 
 for i in range(int(input())):
-  lst = []
-  for i in range(4):
-    lst.append(int(input()))
+    lst = []
+    for i in range(4):
+        lst.append(int(input()))
   
-  a = lst[0]
-  b = lst[1]
-  c = lst[2]
-  d = lst[3]
+    a = lst[0]
+    b = lst[1]
+    c = lst[2]
+    d = lst[3]
   
-  operlist = ['+', '-', '*', '/']
-  string = ""
-  numlist = []
-  for i in range(4):
-    for j in range(4):
-      for k in range(4):
-        string = str(a)+operlist[i]+str(b)+operlist[j]+str(c)+operlist[k]+str(d)
-        value = calculator(string)
-        
-        if isinstance(value, int):
-          if value <= 24:  
-            numlist.append(value)
-        
-        
-  print(max(numlist)) 
+    operlist = ['+', '-', '*', '/']
+    string = ""
+    cardorder = ['0123', '0132', '0213', '0231', '0312', '0321', '1023', '1032', '1203', '1230', '1302', '1320', '2013', '2031', '2103', '2130', '2301', '2310', '3012', '3021', '3102', '3120', '3201', '3210']
+    numlist = []
+    for order in cardorder:
+        for i in range(4):
+            for j in range(4):
+                for k in range(4):
+                    string = str(lst[int(order[0])])+operlist[i]+str(lst[int(order[1])])+operlist[j]+str(lst[int(order[2])])+operlist[k]+str(lst[int(order[3])])
+                    value = calculator(string)
+            
+                    if isinstance(value, int):
+                        if value <= 24:
+                            numlist.append(value)
+
+    print(max(numlist)) 
   

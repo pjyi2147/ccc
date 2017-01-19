@@ -3,18 +3,12 @@
 import os
 import sys 
 with open(os.path.join(sys.path[0], 's3.5.in'), 'r') as f:
-    entirefile = f.readlines()
-    p = 0
-    t = int(entirefile[p]) 
-    p = p + 1
-    for i in range(int(t)):
+    for i in range(int(f.readline())):
         # this list is listed backwards
-        numlist = [] 
-        n = int(entirefile[p])  
-        p = p + 1     
-        for i in range(n):
-            numlist.append(int(entirefile[p]))
-            p = p + 1
+        n = int(f.readline())
+        numlist = []
+        for i in range(n):  
+            numlist.append(int(f.readline()))
 
         branch = []
         lake = []
