@@ -4,7 +4,6 @@ def j4():
     for col in range(-200, 201):
         for row in range(-1, -201, -1):
             wellPlan[(row,col)] = False
-
     #enter the spots
     wellPlan[(-1,0)] = True
     wellPlan[(-2,0)] = True
